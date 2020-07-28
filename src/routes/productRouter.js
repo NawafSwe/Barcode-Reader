@@ -15,5 +15,10 @@ productRouter.post('/', async (req, res) => {
 	res.json(response).status(200);
 });
 
+productRouter.post('/code', async (req, res) => {
+	const response = await productController.getProductByBarcode(req.body.code);
+	res.json(response).status(200);
+});
+
 /* ------- model exporting -------- */
 module.exports = productRouter;

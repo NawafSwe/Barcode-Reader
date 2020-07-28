@@ -5,11 +5,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const db_connection = require('./db');
 const productRouter = require('./routes/productRouter');
+const _methodOverride;
 
 /* -------App Configuration-------- */
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.set('view engine', 'ejs');
 
 /* -------------- choosing Env ---------------------- */
 if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
