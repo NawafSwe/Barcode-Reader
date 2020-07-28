@@ -3,8 +3,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const expressSession = require('express-session');
-const MemoryStore = require('memorystore')(expressSession);
+const db_connection = require('./db');
+const productRouter = require('./routes/productRouter');
 
 /* -------App Configuration-------- */
 const app = express();
@@ -18,10 +18,18 @@ if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production')
 	require('dotenv').config();
 }
 
+/* -------------- Database Connection ---------------------- */
+const MONGO_URI = process.env.MONGO_URI;
+ db_connection(MONGO_URI);
+
+
 /* -------------- checking backend connectivity ---------------------- */
 app.get('/', async (req, res) => {
 	res.send('I Am Working OKAY!').status(200);
 });
+
+/* -------------- App Routers---------------------- */
+app.use('/products',productRouter);
 
 /* -------------- establishing server connection ---------------------- */
 const PORT = process.env.PORT || 6666;
