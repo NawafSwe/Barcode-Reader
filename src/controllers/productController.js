@@ -17,7 +17,7 @@ const getProducts = async () => {
 
 const postProduct = async (product) => {
 	try {
-		const generateBarcode = await QRGenerator.generateBarcodeImage(product.name);
+		const generateBarcode = await QRGenerator.generateBarcode2D(product.name);
 		product.codeUrl = generateBarcode.codeUrl;
 		product.codeBase64 = generateBarcode.codeBase64;
 		console.log(product.codeUrl);

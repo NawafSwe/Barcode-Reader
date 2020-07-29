@@ -21,6 +21,7 @@
 		},
 		"homepage": "https://github.com/NawafSwe/Barcode-Reader-#readme",
 		"dependencies": {
+				"@zxing/library": "^0.17.0",
 				"Babel": "0.0.1",
 				"axios": "^0.19.2",
 				"body-parser": "^1.19.0",
