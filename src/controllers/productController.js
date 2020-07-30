@@ -1,6 +1,5 @@
 /* ------- importing Packages -------- */
 const Product = require('../models/product');
-const QRGenerator = require('../helpers/helper');
 
 /* ------- Functions -------- */
 
@@ -17,12 +16,7 @@ const getProducts = async () => {
 
 const postProduct = async (product) => {
 	try {
-		const generateBarcode = await QRGenerator.generateBarcode2D(product.name);
-		product.codeUrl = generateBarcode.codeUrl;
-		product.codeBase64 = generateBarcode.codeBase64;
-		console.log(product.codeUrl);
-		console.log(product.codeBase64);
-		console.log(product.name);
+		console.log(product);
 		const response = await Product.create(product);
 		return response;
 	} catch (e) {
@@ -65,16 +59,16 @@ const putProduct = async (id, product) => {
 	}
 };
 
-const getProductByBarcode = async (code) => {
+const getProductByCode = async (code) => {
 	try {
-		const response = await Product.find({ codeBase64: code });
+		const response = await Product.find({ code: code });
 		return response;
 	} catch (e) {
 		console.log(
-			`error happen in the product controller at getProductByBarcode()  error is ${e.message}`
+			`error ocurred in productController at getProductByCode() , error message : ${e.message} `
 		);
 	}
 };
 
 /* ------- Model Exporting for functions -------- */
-module.exports = { getProducts, postProduct, getProductById, putProduct, getProductByBarcode };
+module.exports = { getProducts, postProduct, getProductById, putProduct, getProductByCode };

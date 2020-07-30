@@ -26,20 +26,7 @@ db_connection(MONGO_URI);
 
 /* -------------- checking backend connectivity ---------------------- */
 app.get('/', async (req, res) => {
-	res.render('home', { data: '' });
-});
-
-app.get('/qr', async (req, res) => {
-	const BrowserQRCodeReader = require('@zxing/library').BrowserQRCodeReader;
-	const codeReader = new BrowserQRCodeReader();
-	try {
-		const result = await codeReader.decodeFromImage(req.body.image);
-		console.log(result);
-	} catch (err) {
-		console.error(err);
-	}
-
-	
+	res.send('hello I am fine!');
 });
 
 /* -------------- App Routers---------------------- */

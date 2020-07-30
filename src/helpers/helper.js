@@ -29,5 +29,9 @@ const generateBarcode2D = async (text) => {
 
 
 
+
+
+
+
 /* ----------- exporting functions -------------------- */
 module.exports = { generateBarcode2D: generateBarcode2D };
