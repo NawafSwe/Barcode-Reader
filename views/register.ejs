@@ -3,8 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Barcode Reader</title>
+		<title>barcode reader</title>
 	</head>
 	<link
 		rel="stylesheet"
@@ -12,33 +11,22 @@
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 		crossorigin="anonymous"
 	/>
-
 	<body>
 		<div class="container">
-			<div class="row">
-				<div class="col-6">
-					<p id="product-name" class="card-text">Product Name :</p>
-					<p id="product-code" class="card-text">Product code :</p>
-					<p id="product-quantity" class="card-text">Product quantity:</p>
-					<button class="btn btn-primary">Scan again!</button>
+			<form>
+				<div class="form-control" style="width: 50%; height: 50%;">
+					<input type="text" name="productName" placeholder="name" style="display:block; margin-top: 30px;" />
+					<input
+						type="text"
+						name="productPrice"
+						placeholder="price"
+						style="display:block; margin-top: 30px;"
+                    />
+                    
+                    
 				</div>
-				<div class="col-3">
-					<div class="container">
-						<button id="return-product" class="btn btn-primary">return product</button>
-						<button id="delete-product" class="btn btn-primary">
-							delete product from the database
-						</button>
-						<button id="buy-product" class="btn btn-primary">customer take product</button>
-					</div>
-				</div>
-				<div class="col-3">
-					<div id="camera"></div>
-				</div>
-			</div>
+			</form>
 		</div>
-
-		<script src="quagga.min.js"></script>
-		<script src="app.js"></script>
 
 		<script
 			src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
