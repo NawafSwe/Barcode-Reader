@@ -37,4 +37,7 @@ you have to follow along to run it successfully
 
 - note I recommend that you go to mongoAtlas for hosting the db
 - note I recommend that you host the backend on heroku
+
+* furthermore, you can test the end points using postman where I lef a collection file for all the endpoints
+to test it locally feel free to change it later on or play with it
 </ul>
