@@ -26,7 +26,7 @@ db_connection(MONGO_URI);
 
 /* -------------- checking backend connectivity ---------------------- */
 app.get('/', async (req, res) => {
-	res.render('register');
+	res.render('home');
 });
 
 /* -------------- App Routers---------------------- */
