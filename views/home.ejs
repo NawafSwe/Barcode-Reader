@@ -1,17 +1,11 @@
-<!-- index.html -->
-<html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>barCode Reader</title>
+	</head>
 	<body>
-		<img
-			id="img"
-			width="300"
-			height="200"
-			style="border: 1px solid gray;"
-			src="https://jet-marking.com/wp-content/uploads/2017/04/pasted-image-0-1.png"
-		/>
+		
 	</body>
-
-	<script type="module">
-		const image = document.querySelector('#img');
-		const res = fetch('http://127.0.0.1:8000/qr', { image: image });
-	</script>
 </html>
