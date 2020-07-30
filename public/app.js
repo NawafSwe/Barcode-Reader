@@ -1,17 +1,9 @@
-/* this file has the proper functionalities to scan a barcode image and perform a db call to check 
-for the product or do some operation as requested from the front end  */
-
-/** for more read on the documentation for further customization
- *  https://serratus.github.io/quaggaJS/
- *
- */
-
 /* ------------------- IMPORTANT  VARIABLES -------------------  */
 
 //local uri for the database you can use it during the testing phase not in production
 const LOCAL_API = `http://127.0.0.1:8000/products/`;
 
-//if you host your own database
+//if you host your own database in your lovely cloud , I recommend to use mongoAtlas and heroku
 const HOSTED_SERVER = ``;
 
 // LookingForProduct to control the calls to the database if the product was found no need to call it again
@@ -20,7 +12,7 @@ let LookingForProduct = true;
 
 /* ------------------- essential elements -------------------  */
 
-//the camera box where the live stream starts
+//the camera box where the live stream starts , feel free to put your own elements
 let camera = document.querySelector('#camera');
 
 /* ------------------- essential elements -------------------  */
@@ -40,12 +32,16 @@ let productQuantityValue = '';
 /* ------------------- HELPER FUNCTIONS -------------------  */
 
 /**
- *
+ * 'fetchProducts' to get all products from the data base
+ * @return {Array}  returns array of products
+ * @return {Error} returns an error message if there is any
  */
 const fetchProducts = async () => {
 	try {
+		//feel free to fetch from your own hosted database
 		const response = await fetch(`${LOCAL_API}`);
 		const result = await response.json();
+		//for testing I have consoled the result feel free to remove it
 		console.log('result is : ', result);
 		return result;
 	} catch (error) {
@@ -56,8 +52,10 @@ const fetchProducts = async () => {
 };
 
 /**
- *
- * @param {*} id
+ * 'fetchProductById' function that gets a product by its id
+ * @param {String} id the id of the product
+ * @return {Object} returns the product if there is no error
+ * @return {Error} returns an error message if there is any
  */
 
 const fetchProductById = async (id) => {
@@ -73,11 +71,23 @@ const fetchProductById = async (id) => {
 };
 
 /**
+ * 'fetchProductByCode' function that gets a product by its id
+ * NOTE : this function it is an IMPORTANT Function where you can benefit from its response in many cases
+ * case 1 : if you want to delete a product from the database it is easy just call this function then take the id
+ * if the response then pass it to the delete function
  *
- * @param {*} code
+ * case 2 : if you want to update a product info for example you decreased the quantity or changed the price
+ * all you have to do call this function then pass the id to the update productFunction
+ *
+ * case 3 : you have the accessability to the data where you can place the info in the front end if you prefer to
+ *
+ * @param {String} code
+ * @return {Object} returns the founded product if there is no error
+ * @return {Error} returns an error if there is any
  */
 const fetchProductByCode = async (code) => {
 	try {
+		//the response where we passed the code as query
 		const response = await fetch(`${LOCAL_API}/?code=${code}`);
 		const result = await response.json();
 		return result;
@@ -87,7 +97,13 @@ const fetchProductByCode = async (code) => {
 		);
 	}
 };
+
+/**
+ * 'activateCamera' function this for activating the webcam again , note this is my own work flow feel free to change it
+ * @return {Void}
+ */
 function activateCamera() {
+	//it will call the StartQuagga() function again
 	StartQuagga();
 }
 
@@ -105,6 +121,8 @@ const startLookingForProduct = async (code) => {
 	//SetTimeOut takes two args 1-Call Back Function , 2-time in milliseconds where it will be called
 	//in arg1 where you start searching process
 	//in arg2 I proffered to call the database every 10000 milliseconds which is 1 second , feel free to change it but try to not minimize it too much
+	//to read more about the setTimeOut I recommend you to go to this docs https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+	//not there are many javaScripts timer but this is my favorite feel free to choose yours from here https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/Timers
 
 	setTimeout(async () => {
 		//we cheek if the product was found or not
@@ -133,7 +151,7 @@ const startLookingForProduct = async (code) => {
 				return product;
 			}
 		}
-	}, 1200);
+	}, 1000);
 };
 
 /**
@@ -157,6 +175,8 @@ async function postProduct(data) {
 		};
 
 		//posting the data in json format to the url 'LOCAL_API' , feel free to change the url
+
+		//note use data instead of product just pass the data as an object like the product above
 		const response = await fetch(`${LOCAL_API}`, {
 			headers: {
 				Accept: 'application/json',
@@ -171,6 +191,63 @@ async function postProduct(data) {
 		console.log(result);
 	} catch (e) {
 		console.log(`error happened in postProduct() ${e.message}`);
+	}
+}
+/**
+ * 'deleteProduct' function deletes a product from the database
+ * @param {String} id of the product you can achieve it by getting hold of it after the scanning where you will get a full response that contains all the info of a product
+ * including the id
+ * @return {Object} returns the deleted object from the database
+ * @return {Error} returns an error if any error was found
+ *   */
+async function deleteProduct(id) {
+	try {
+		const response = await fetch(`${LOCAL_API}/${id}`, {
+			method: 'DELETE',
+		});
+
+		return response;
+	} catch (e) {
+		console.log(
+			`error happen in while deleting product , error in deleteProduct() , error : ${e.message} `
+		);
+	}
+}
+
+/**
+ * 'updateProduct' function that updates the data of a product to the database
+ * @param {String} id of the product you can achieve it by getting hold of it after the scanning where you will get a full response that contains all the info of a product
+ * including the id
+ *
+ * @param {Object} data the new data you want to update
+ *
+ * @return {Object} returns the product that has been updated from the database not the product with the new info updated
+ * @return {Error} returns an error message if there is any
+ */
+async function updateProduct(id, data) {
+	//for the seek of testing I have provided two variables for example I want to update the quantity and the price
+	//please note names must match same names in the database
+	const price = 30;
+	const quantity = 20;
+	const product = {
+		price: price,
+		quantity: quantity,
+	};
+
+	try {
+		const response = await fetch(`${LOCAL_API}/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8', // Indicates the content
+			},
+			body: JSON.stringify(product), // We send data in JSON format
+		});
+		const result = await response.json();
+		return result;
+	} catch (e) {
+		console.log(
+			`error happen in while deleting product , error in updateProduct() , error : ${e.message} `
+		);
 	}
 }
 
