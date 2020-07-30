@@ -101,7 +101,7 @@ const putProduct = async (id, product) => {
  */
 const getProductByCode = async (code) => {
 	try {
-		const response = await Product.find({ code: code });
+		const response = await Product.findOne({ code: code });
 		const result = {
 			product: response,
 			code: 200,

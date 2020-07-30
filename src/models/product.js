@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const ProductSchema = mongoose.Schema({
 	name: { type: String },
 	quantity: { type: Number },
-	code: {type:String}
+	code: { type: String },
+	price: { type: Number },
 });
 
 /* ------------ Creating Mongo model ------------ */
