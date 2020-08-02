@@ -224,7 +224,9 @@ async function deleteProduct(id) {
  * @return {Object} returns the product that has been updated from the database not the product with the new info updated
  * @return {Error} returns an error message if there is any
  */
+
 async function updateProduct(id, data) {
+
 	//for the seek of testing I have provided two variables for example I want to update the quantity and the price
 	//please note names must match same names in the database
 	const price = 30;
@@ -246,7 +248,7 @@ async function updateProduct(id, data) {
 		return result;
 	} catch (e) {
 		console.log(
-			`error happen in while deleting product , error in updateProduct() , error : ${e.message} `
+			`error happen in while deleting product , error in updateProduct() , error : ${e.message}`
 		);
 	}
 }
@@ -266,7 +268,7 @@ function updateUI() {
 /* ------------------- Quagga Configuration ------------------- */
 
 /**
- *'StartQuagga' this function is for initalizing the webcam of the user
+ * 'StartQuagga' this function is for initalizing the webcam of the user
  * it provide many options where you can control the size of the camera box and more things and functions you can read the docs
  *  https://serratus.github.io/quaggaJS/
  * @return {Error} return an error if the user rejects the permission to access the camera

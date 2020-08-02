@@ -111,6 +111,7 @@ all the endpoints must be used within `JSON` object
 
 - delete a product by id `http://127.0.0.1:8000/products/5f22cf0696d8fe2d95566143`
   <strong>response in from of :</strong>
+  
   `{ "_id": "5f22ef7eae488a486abf6eef", "name": "The Body Shop", "quantity": 20, "code": "5028197192723", "price": 30, "__v": 0 }`
 
 - update a product info by id `http://127.0.0.1:8000/products/5f22cf0696d8fe2d95566143`

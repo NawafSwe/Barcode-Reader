@@ -17,7 +17,7 @@ const QRCode2D = require('qrcode');
  */
 const generateBarcode2D = async (text) => {
 	try {
-		const generateQR = await QRCode2D.toDataURL('I am a pony!');
+		const generateQR = await QRCode2D.toDataURL(text);
 		const url = await QRCode2D.toString(text, { type: 'png' });
 		return {
 			codeUrl: url,
