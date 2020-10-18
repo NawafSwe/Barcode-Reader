@@ -2,10 +2,14 @@
 const mongoose = require('mongoose');
 
 /* ------- Functions Packages -------- */
-/**
- * 'connection' function where it establishes a connection to mongo database
- * @param {String} MONGO_URI the database URL
- * @return {Error} returns an error message if there is any
+/** @author Nawaf Alsharqi. 
+ * @async
+ * @function
+ * @name connection
+ * @param {String} MONGO_URI the database URL.
+ * @return {Void} Void function.
+ * @throws {Error} returns an error message if there is any.
+ * @description establishes a connection to mongo database.
  */
 const connection = async (MONGO_URI) => {
 	try {
