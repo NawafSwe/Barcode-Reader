@@ -3,11 +3,13 @@ const Product = require('../models/product');
 
 /* ------------------------ Functions ------------------------ */
 
-/**
- *  'getProducts' function gets all the products that registered in the database
+/**@author Nawaf Alsharqi.
+ * @async
+ * @function 
+ * @name getProducts
  * @return {Array} array of products data if there is no error
- * @return {Error} returns error message if there is any
- *
+ * @throws {Error} throws an error if there is an error.
+ * @description gets all the products that registered in the database.
  */
 
 const getProducts = async () => {
@@ -21,11 +23,14 @@ const getProducts = async () => {
 	}
 };
 
-/**
- * 'postProduct' function that posts new product to the database
+/** @author Nawaf Alsharqi.
+ * @async
+ * @function
+ * @name postProduct
  * @param {Object} product object that contains all the information of particular product
- * @return {Object} returns the product info after posting it to the database if there is no error
- * @return {Error} returns an error message if there is any
+ * @return {Object} returns the product info after posting it to the database if there is no error.
+ * @throws {Error} returns an error message if there is any.
+ * @description post new product to the database.
  */
 const postProduct = async (product) => {
 	try {
@@ -39,11 +44,14 @@ const postProduct = async (product) => {
 	}
 };
 
-/**
- * 'getProductById' function that returns a product from the database by its id
- * @param {String} id of particular product
- * @return {Object} returns a product object if there is no error
- * @return {Error} returns an error message if there is any
+/** @author Nawaf Alsharqi.
+ * @async
+ * @function
+ * @name getProductById
+ * @param {String} id of particular product.
+ * @return {Object} returns a product object if there is no error.
+ * @throws {Error} returns an error message if there is any.
+ * @description returns a product from the database by its id.
  */
 const getProductById = async (id) => {
 	try {
@@ -56,11 +64,14 @@ const getProductById = async (id) => {
 	}
 };
 
-/**
- * 'deleteProduct' function that deletes a product from a database by its id
- * @param {String} id of the product to be deleted
- * @return {Object} returns the deleted object from the database if there is no error
- * @return {Error} returns error message if there is any
+/** @author Nawaf Alsharqi.
+ * @async
+ * @function
+ * @name deleteProduct.
+ * @param {String} id of the product to be deleted.
+ * @return {Object} returns the deleted object from the database if there is no error.
+ * @throws {Error} returns error message if there is any.
+ * @description deletes a product from a database by its id.
  */
 const deleteProduct = async (id) => {
 	try {
@@ -73,13 +84,15 @@ const deleteProduct = async (id) => {
 	}
 };
 
-/**
- * 'putProduct' function that updates particular product information from the database by id
+/** @author Nawaf Alsharqi.
+ * @async
+ * @function
+ * @name putProduct.
  * @param {String} id of the product to be updated
  * @param {Object} product the new product information like (quantity or code or name)
  * @return {Object} returns the updated product if there is no error
- * @return {Error} returns error message if there is any error
- *
+ * @throws {Error} returns error message if there is any error
+ * @description updates particular product information from the database by id
  */
 
 const putProduct = async (id, product) => {
@@ -93,11 +106,14 @@ const putProduct = async (id, product) => {
 	}
 };
 
-/**
- * 'getProductByCode' function that gets a particular product by its code from the database
+/** @author Nawaf Alsharqi.
+ * @async
+ * @function
+ * @name getProductByCode.
  * @param {String} code
  * @return {Object} returns a product object if there is no error
- * @return {Error} returns an error message if there is any
+ * @throws {Error} returns an error message if there is any
+ * @description gets a particular product by its code from the database
  */
 const getProductByCode = async (code) => {
 	try {
