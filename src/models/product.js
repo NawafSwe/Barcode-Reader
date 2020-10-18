@@ -1,6 +1,9 @@
 /* ------------ importing packages ------------ */
 const mongoose = require('mongoose');
 
+/**
+ * @description creating the product schema using mongoose.
+ */
 /* ------------ Creating Schema ------------ */
 const ProductSchema = mongoose.Schema({
 	name: { type: String },

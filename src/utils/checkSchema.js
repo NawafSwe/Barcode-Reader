@@ -5,13 +5,15 @@
 
 /* ------------------- functions ------------------- */
 
-/**
- * this function 'validateSchema' validates the schema of a request.
+/** @author Nawaf Alsharqi
+ * @export
+ * @function
+ * @name validateSchema.
  * @param {list}  schemas - list hold all the schema of a particular request.
- * @param {Object} request - request Object that holds the request body
- * @returns {boolean} if there is no error
- * @returns {Error} if there is an error
- *
+ * @param {Object} request - request Object that holds the request body.
+ * @returns {boolean} if there is no error.
+ * @returns {Error} if there is an error.
+ * @description validates the schema of a request.
  */
 
 function validateSchema(schemas, request) {
@@ -31,13 +33,15 @@ function validateSchema(schemas, request) {
 	else throw new Error(`invalid queries [${unRequiredSchemas}] were included in the request`);
 }
 
-/**
- * this function 'validateQuery' validates the query of a request url.
+/** @author Nawaf Alsharqi
+ * @export
+ * @function
+ * @name validateQuery.
  * @param {list}  queries - list hold all the schema of a particular request.
- * @param {Object} request - request Object that holds the request query
- * @returns {boolean} if there is no error
- * @returns {Error} if there is an error
- *
+ * @param {Object} request - request Object that holds the request query.
+ * @returns {boolean} if there is no error.
+ * @returns {Error} if there is an error.
+ * @description validates the query of a request url
  */
 function validateQuery(queries, request) {
 	//the purpose of the unRequiredSchemas is to add any key from the request body inside it;
