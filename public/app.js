@@ -31,10 +31,13 @@ let productQuantityValue = '';
 
 /* ------------------- HELPER FUNCTIONS -------------------  */
 
-/**
- * 'fetchProducts' to get all products from the data base
+/** @author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name fetchProducts
  * @return {Array}  returns array of products
- * @return {Error} returns an error message if there is any
+ * @throws {Error} returns an error message if there is any.
+ * @description get all products from the data base.
  */
 const fetchProducts = async () => {
 	try {
@@ -51,11 +54,14 @@ const fetchProducts = async () => {
 	}
 };
 
-/**
- * 'fetchProductById' function that gets a product by its id
+/** @author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name fetchProductById
  * @param {String} id the id of the product
  * @return {Object} returns the product if there is no error
- * @return {Error} returns an error message if there is any
+ * @throws {Error} returns an error message if there is any.
+ * @description gets a product by its id
  */
 
 const fetchProductById = async (id) => {
@@ -70,20 +76,20 @@ const fetchProductById = async (id) => {
 	}
 };
 
-/**
- * 'fetchProductByCode' function that gets a product by its id
+/** @author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name fetchProductByCode
+ * @param {String} code of product.
+ * @return {Object} returns the founded product if there is no error.
+ * @throws {Error} returns an error if there is any.
+ * @description  gets a product by its code 
  * NOTE : this function it is an IMPORTANT Function where you can benefit from its response in many cases
  * case 1 : if you want to delete a product from the database it is easy just call this function then take the id
  * if the response then pass it to the delete function
- *
  * case 2 : if you want to update a product info for example you decreased the quantity or changed the price
  * all you have to do call this function then pass the id to the update productFunction
- *
  * case 3 : you have the accessability to the data where you can place the info in the front end if you prefer to
- *
- * @param {String} code
- * @return {Object} returns the founded product if there is no error
- * @return {Error} returns an error if there is any
  */
 const fetchProductByCode = async (code) => {
 	try {
@@ -98,22 +104,26 @@ const fetchProductByCode = async (code) => {
 	}
 };
 
-/**
- * 'activateCamera' function this for activating the webcam again , note this is my own work flow feel free to change it
- * @return {Void}
+/** @author Nawaf Alsharqi
+ * @function
+ * @name activateCamera
+ * @return {Void} void function.
+ * @description activates the webcam again , note this is my own work flow feel free to change it.
  */
 function activateCamera() {
 	//it will call the StartQuagga() function again
 	StartQuagga();
 }
 
-/**
- * 'startLookingForProduct' function that looks up for a product by the code that scanned from the webcam
- * the process is to simple where we have a control variable to check if the element was found stop checking the database and stop the setTimeOut function
- *
+/** @author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name startLookingForProduct
  * @param {String} code
- * @return {Object} returns product object if there is no error
- * @return {Error} returns an error message if there is any
+ * @return {Object} returns product object if there is no error.
+ * @throws {Error} returns an error message if there is any.
+ * @description looks up for a product by the code that scanned from the webcam
+ * the process is to simple where we have a control variable to check if the element was found stop checking the database and stop the setTimeOut function.
  */
 const startLookingForProduct = async (code) => {
 	//first we check startLookingForProduct as mentioned above it is a controller variable
@@ -154,11 +164,14 @@ const startLookingForProduct = async (code) => {
 	}, 1000);
 };
 
-/**
- *
+/** @author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name postProduct
  * @param {Object} data the product data where the product should have price , name ,code ,quantity
  * @return {Object} returns the posted product if the request was successfully done , NOTE YOU HAVE  to check for the response if the product was added or not
- * @return {Error} returns error message in the console if there is any, feel free to customize your message error
+ * @throws {Error} returns error message in the console if there is any, feel free to customize your message error
+ * @description post new product to the database
  */
 async function postProduct(data) {
 	try {
@@ -193,12 +206,15 @@ async function postProduct(data) {
 		console.log(`error happened in postProduct() ${e.message}`);
 	}
 }
-/**
- * 'deleteProduct' function deletes a product from the database
+/** @author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name deleteProduct
  * @param {String} id of the product you can achieve it by getting hold of it after the scanning where you will get a full response that contains all the info of a product
  * including the id
- * @return {Object} returns the deleted object from the database
- * @return {Error} returns an error if any error was found
+ * @return {Object} returns the deleted object from the database.
+ * @throws {Error} returns an error if any error was found.
+ * @description deletes a product from the database by id.
  *   */
 async function deleteProduct(id) {
 	try {
@@ -214,15 +230,16 @@ async function deleteProduct(id) {
 	}
 }
 
-/**
- * 'updateProduct' function that updates the data of a product to the database
+/** @author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name updateProduct.
  * @param {String} id of the product you can achieve it by getting hold of it after the scanning where you will get a full response that contains all the info of a product
  * including the id
- *
  * @param {Object} data the new data you want to update
- *
  * @return {Object} returns the product that has been updated from the database not the product with the new info updated
- * @return {Error} returns an error message if there is any
+ * @throws {Error} returns an error message if there is any.
+ * @description updates the data of a product to the database.
  */
 
 async function updateProduct(id, data) {
@@ -253,9 +270,12 @@ async function updateProduct(id, data) {
 	}
 }
 
-/**
- * 'updateUI' function that updates the UI , was implemented for the seek of Testing proposes, feel free to use it and replace my elements with yours
- * @return {void}
+/** @author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name updateUI.
+ * @return {void} void function.
+ * @description updates the UI , was implemented for the seek of Testing proposes, feel free to use it and replace my elements with yours
  */
 function updateUI() {
 	productName.textContent = `product name : ${productNameValue}`;
@@ -267,11 +287,14 @@ function updateUI() {
 
 /* ------------------- Quagga Configuration ------------------- */
 
-/**
- * 'StartQuagga' this function is for initalizing the webcam of the user
- * it provide many options where you can control the size of the camera box and more things and functions you can read the docs
- *  https://serratus.github.io/quaggaJS/
+/**@author Nawaf Alsharqi
+ * @async
+ * @function
+ * @name StartQuagga.
  * @return {Error} return an error if the user rejects the permission to access the camera
+ * @description  initalizilize the webcam of the user.
+ * @summary  it provide many options where you can control the size of the camera box and more things and functions you can read the docs
+ *  https://serratus.github.io/quaggaJS/.
  */
 function StartQuagga() {
 	//setting the looking for product condition to be true again
