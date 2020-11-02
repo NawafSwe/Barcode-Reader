@@ -40,18 +40,18 @@ let productQuantityValue = '';
  * @description get all products from the data base.
  */
 const fetchProducts = async () => {
-	try {
-		//feel free to fetch from your own hosted database
-		const response = await fetch(`${LOCAL_API}`);
-		const result = await response.json();
-		//for testing I have consoled the result feel free to remove it
-		console.log('result is : ', result);
-		return result;
-	} catch (error) {
-		console.log(
-			`error happened while fetching product  at the function fetchProducts() , error ${error.message}`
-		);
-	}
+    try {
+        //feel free to fetch from your own hosted database
+        const response = await fetch(`${LOCAL_API}`);
+        const result = await response.json();
+        //for testing I have consoled the result feel free to remove it
+        console.log('result is : ', result);
+        return result;
+    } catch (error) {
+        console.log(
+            `error happened while fetching product  at the function fetchProducts() , error ${error.message}`
+        );
+    }
 };
 
 /** @author Nawaf Alsharqi
@@ -65,15 +65,15 @@ const fetchProducts = async () => {
  */
 
 const fetchProductById = async (id) => {
-	try {
-		const response = await fetch(`${LOCAL_API}/${id}`);
-		const result = await response.json();
-		return result;
-	} catch (error) {
-		console.log(
-			`error happened while fetching product  at the function fetchProductById() , error ${error.message}`
-		);
-	}
+    try {
+        const response = await fetch(`${LOCAL_API}/${id}`);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.log(
+            `error happened while fetching product  at the function fetchProductById() , error ${error.message}`
+        );
+    }
 };
 
 /** @author Nawaf Alsharqi
@@ -83,7 +83,7 @@ const fetchProductById = async (id) => {
  * @param {String} code of product.
  * @return {Object} returns the founded product if there is no error.
  * @throws {Error} returns an error if there is any.
- * @description  gets a product by its code 
+ * @description  gets a product by its code
  * NOTE : this function it is an IMPORTANT Function where you can benefit from its response in many cases
  * case 1 : if you want to delete a product from the database it is easy just call this function then take the id
  * if the response then pass it to the delete function
@@ -92,16 +92,16 @@ const fetchProductById = async (id) => {
  * case 3 : you have the accessability to the data where you can place the info in the front end if you prefer to
  */
 const fetchProductByCode = async (code) => {
-	try {
-		//the response where we passed the code as query
-		const response = await fetch(`${LOCAL_API}/?code=${code}`);
-		const result = await response.json();
-		return result;
-	} catch (error) {
-		console.log(
-			`error happened while fetching product  at the function fetchProductById() , error ${error.message}`
-		);
-	}
+    try {
+        //the response where we passed the code as query
+        const response = await fetch(`${LOCAL_API}/?code=${code}`);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.log(
+            `error happened while fetching product  at the function fetchProductById() , error ${error.message}`
+        );
+    }
 };
 
 /** @author Nawaf Alsharqi
@@ -111,8 +111,8 @@ const fetchProductByCode = async (code) => {
  * @description activates the webcam again , note this is my own work flow feel free to change it.
  */
 function activateCamera() {
-	//it will call the StartQuagga() function again
-	StartQuagga();
+    //it will call the StartQuagga() function again
+    StartQuagga();
 }
 
 /** @author Nawaf Alsharqi
@@ -126,42 +126,42 @@ function activateCamera() {
  * the process is to simple where we have a control variable to check if the element was found stop checking the database and stop the setTimeOut function.
  */
 const startLookingForProduct = async (code) => {
-	//first we check startLookingForProduct as mentioned above it is a controller variable
-	//if it was true we call setTimeOut function to run
-	//SetTimeOut takes two args 1-Call Back Function , 2-time in milliseconds where it will be called
-	//in arg1 where you start searching process
-	//in arg2 I proffered to call the database every 10000 milliseconds which is 1 second , feel free to change it but try to not minimize it too much
-	//to read more about the setTimeOut I recommend you to go to this docs https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
-	//not there are many javaScripts timer but this is my favorite feel free to choose yours from here https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/Timers
+    //first we check startLookingForProduct as mentioned above it is a controller variable
+    //if it was true we call setTimeOut function to run
+    //SetTimeOut takes two args 1-Call Back Function , 2-time in milliseconds where it will be called
+    //in arg1 where you start searching process
+    //in arg2 I proffered to call the database every 10000 milliseconds which is 1 second , feel free to change it but try to not minimize it too much
+    //to read more about the setTimeOut I recommend you to go to this docs https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+    //not there are many javaScripts timer but this is my favorite feel free to choose yours from here https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Code_snippets/Timers
 
-	setTimeout(async () => {
-		//we cheek if the product was found or not
-		if (LookingForProduct) {
-			const response = await fetchProductByCode(code);
-			//we check if the product was found or not
-			if (response.product != null) {
-				const product = await response.product;
+    setTimeout(async () => {
+        //we cheek if the product was found or not
+        if (LookingForProduct) {
+            const response = await fetchProductByCode(code);
+            //we check if the product was found or not
+            if (response.product != null) {
+                const product = await response.product;
 
-				//after we found it finally we set the control variable to be false which means stop looking
-				LookingForProduct = false;
-				//and stop the camera , this is my work flow feel free to play with it but it will continue scan
-				Quagga.stop();
+                //after we found it finally we set the control variable to be false which means stop looking
+                LookingForProduct = false;
+                //and stop the camera , this is my work flow feel free to play with it but it will continue scan
+                Quagga.stop();
 
-				//for the seek of testing I have used these variables for updating the ui and visualize the result
-				productNameValue = await product.name;
-				productCodeValue = await product.code;
-				productQuantityValue = await product.quantity;
+                //for the seek of testing I have used these variables for updating the ui and visualize the result
+                productNameValue = await product.name;
+                productCodeValue = await product.code;
+                productQuantityValue = await product.quantity;
 
-				//for the seek of testing I have console the result feel free to delete it
-				console.log(product);
-				//for the seek of testing I have used this function for updating the ui and visualize the result
-				updateUI();
+                //for the seek of testing I have console the result feel free to delete it
+                console.log(product);
+                //for the seek of testing I have used this function for updating the ui and visualize the result
+                updateUI();
 
-				//last exit the function and return the found product
-				return product;
-			}
-		}
-	}, 1000);
+                //last exit the function and return the found product
+                return product;
+            }
+        }
+    }, 1000);
 };
 
 /** @author Nawaf Alsharqi
@@ -174,38 +174,39 @@ const startLookingForProduct = async (code) => {
  * @description post new product to the database
  */
 async function postProduct(data) {
-	try {
-		//for the seek of testing this method later on you can put your own variables from the front-end by pasting the data as a whole product
-		const price = 1.5;
-		const name = 'orange juice';
-		const code = '1234567895';
-		const quantity = 1;
-		const product = {
-			price: price,
-			name: name,
-			code: code,
-			quantity: quantity,
-		};
+    try {
+        //for the seek of testing this method later on you can put your own variables from the front-end by pasting the data as a whole product
+        const price = 1.5;
+        const name = 'orange juice';
+        const code = '1234567895';
+        const quantity = 1;
+        const product = {
+            price: price,
+            name: name,
+            code: code,
+            quantity: quantity,
+        };
 
-		//posting the data in json format to the url 'LOCAL_API' , feel free to change the url
+        //posting the data in json format to the url 'LOCAL_API' , feel free to change the url
 
-		//note use data instead of product just pass the data as an object like the product above
-		const response = await fetch(`${LOCAL_API}`, {
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			method: 'POST',
-			body: JSON.stringify(product),
-		});
-		//taking the result of the post request you can check if it was done successfully or not
-		const result = await response.json();
-		//for testing proposes I have consoled the result , feel free to remove it
-		console.log(result);
-	} catch (e) {
-		console.log(`error happened in postProduct() ${e.message}`);
-	}
+        //note use data instead of product just pass the data as an object like the product above
+        const response = await fetch(`${LOCAL_API}`, {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify(product),
+        });
+        //taking the result of the post request you can check if it was done successfully or not
+        const result = await response.json();
+        //for testing proposes I have consoled the result , feel free to remove it
+        console.log(result);
+    } catch (e) {
+        console.log(`error happened in postProduct() ${e.message}`);
+    }
 }
+
 /** @author Nawaf Alsharqi
  * @async
  * @function
@@ -217,17 +218,17 @@ async function postProduct(data) {
  * @description deletes a product from the database by id.
  *   */
 async function deleteProduct(id) {
-	try {
-		const response = await fetch(`${LOCAL_API}/${id}`, {
-			method: 'DELETE',
-		});
+    try {
+        const response = await fetch(`${LOCAL_API}/${id}`, {
+            method: 'DELETE',
+        });
 
-		return response;
-	} catch (e) {
-		console.log(
-			`error happen in while deleting product , error in deleteProduct() , error : ${e.message} `
-		);
-	}
+        return response;
+    } catch (e) {
+        console.log(
+            `error happen in while deleting product , error in deleteProduct() , error : ${e.message} `
+        );
+    }
 }
 
 /** @author Nawaf Alsharqi
@@ -244,30 +245,30 @@ async function deleteProduct(id) {
 
 async function updateProduct(id, data) {
 
-	//for the seek of testing I have provided two variables for example I want to update the quantity and the price
-	//please note names must match same names in the database
-	const price = 30;
-	const quantity = 20;
-	const product = {
-		price: price,
-		quantity: quantity,
-	};
+    //for the seek of testing I have provided two variables for example I want to update the quantity and the price
+    //please note names must match same names in the database
+    const price = 30;
+    const quantity = 20;
+    const product = {
+        price: price,
+        quantity: quantity,
+    };
 
-	try {
-		const response = await fetch(`${LOCAL_API}/${id}`, {
-			method: 'PUT',
-			headers: {
-				'Content-type': 'application/json; charset=UTF-8', // Indicates the content
-			},
-			body: JSON.stringify(product), // We send data in JSON format
-		});
-		const result = await response.json();
-		return result;
-	} catch (e) {
-		console.log(
-			`error happen in while deleting product , error in updateProduct() , error : ${e.message}`
-		);
-	}
+    try {
+        const response = await fetch(`${LOCAL_API}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8', // Indicates the content
+            },
+            body: JSON.stringify(product), // We send data in JSON format
+        });
+        const result = await response.json();
+        return result;
+    } catch (e) {
+        console.log(
+            `error happen in while deleting product , error in updateProduct() , error : ${e.message}`
+        );
+    }
 }
 
 /** @author Nawaf Alsharqi
@@ -278,9 +279,9 @@ async function updateProduct(id, data) {
  * @description updates the UI , was implemented for the seek of Testing proposes, feel free to use it and replace my elements with yours
  */
 function updateUI() {
-	productName.textContent = `product name : ${productNameValue}`;
-	productQuantity.textContent = `product quantity : ${productQuantityValue}`;
-	productCode.textContent = `product quantity : ${productCodeValue}`;
+    productName.textContent = `product name : ${productNameValue}`;
+    productQuantity.textContent = `product quantity : ${productQuantityValue}`;
+    productCode.textContent = `product quantity : ${productCodeValue}`;
 }
 
 /* ------------------- HELPER FUNCTIONS -------------------  */
@@ -297,48 +298,49 @@ function updateUI() {
  *  https://serratus.github.io/quaggaJS/.
  */
 function StartQuagga() {
-	//setting the looking for product condition to be true again
-	LookingForProduct = true;
-	Quagga.init(
-		{
-			inputStream: {
-				name: 'Live',
-				type: 'LiveStream',
-				target: camera, // Or '#yourElement' (optional), you can customize your element
-			},
-			decoder: {
-				readers: [
-					'code_128_reader',
-					'ean_reader',
-					'ean_8_reader',
-					'code_39_reader',
-					'code_39_vin_reader',
-					'upc_reader',
-					'upc_e_reader',
-					'i2of5_reader',
-				],
-			},
-		},
-		function (err) {
-			if (err) {
-				console.log(err);
-				return;
-			}
-			console.log('Initialization finished. Ready to start');
-			//starting the webcam
-			Quagga.start();
-		}
-	);
+    //setting the looking for product condition to be true again
+    LookingForProduct = true;
+    Quagga.init(
+        {
+            inputStream: {
+                name: 'Live',
+                type: 'LiveStream',
+                target: camera, // Or '#yourElement' (optional), you can customize your element
+            },
+            decoder: {
+                readers: [
+                    'code_128_reader',
+                    'ean_reader',
+                    'ean_8_reader',
+                    'code_39_reader',
+                    'code_39_vin_reader',
+                    'upc_reader',
+                    'upc_e_reader',
+                    'i2of5_reader',
+                ],
+            },
+        },
+        function (err) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log('Initialization finished. Ready to start');
+            //starting the webcam
+            Quagga.start();
+        }
+    );
 
-	//this event for Detection any scan where many codes will goes there , my recommendation is to use setTimeOut after every second scan again
-	//or after every second ask the user if he wants to scan again in case of assigning a product to the database. to take the code correctly
-	//because of human accuracy and the webcam quality itself
-	Quagga.onDetected(async function (data) {
-		//stop after dedication by setting time interval every second call db
-		const code = data.codeResult.code;
-		await startLookingForProduct(code);
-	});
+    //this event for Detection any scan where many codes will goes there , my recommendation is to use setTimeOut after every second scan again
+    //or after every second ask the user if he wants to scan again in case of assigning a product to the database. to take the code correctly
+    //because of human accuracy and the webcam quality itself
+    Quagga.onDetected(async function (data) {
+        //stop after dedication by setting time interval every second call db
+        const code = data.codeResult.code;
+        await startLookingForProduct(code);
+    });
 }
+
 /* ------------------- Quagga Configuration ------------------- */
 
 /* ------------------- Starting Scan ------------------- */
