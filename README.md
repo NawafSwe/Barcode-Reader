@@ -47,10 +47,7 @@ to test it locally feel free to change it later on or play with it
 all the endpoints must be used within `JSON` object
 
 - get all products `http://127.0.0.1:8000/products/` : <strong>response in from of :</strong>
-  `
-
-[
-{
+  `[{
 "_id": "5f22ef7eae488a486abf6eef",
 "name": "The Body Shop",
 "quantity": 20,
