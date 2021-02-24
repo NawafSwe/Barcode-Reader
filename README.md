@@ -91,9 +91,7 @@ all the endpoints must be used within `JSON` object
   "name": "Vaseline cream",
   "quantity":10,
   "code": "6001087011136",
-  "price": "6.50"
-
-       }`
+  "price": "6.50" }`
 
        <strong>response in from of :  </strong>
        `{
