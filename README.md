@@ -93,7 +93,7 @@ all the endpoints must be used within `JSON` object
   "code": "6001087011136",
   "price": "6.50" }`
 
-      <strong>response in from of :</strong> `{
+      <b>response in from of :</b> `{
       "_id": "5f2333d3c0382e73cf45bced",
       "name": "Vaseline cream",
       "quantity": 10,
