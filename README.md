@@ -101,7 +101,7 @@ all the endpoints must be used within `JSON` object
       "price": 6.5,
       "__v": 0
 
-  }`
+  `}
 
 - delete a product by id `http://127.0.0.1:8000/products/5f22cf0696d8fe2d95566143`
   <strong>response in from of :</strong>
