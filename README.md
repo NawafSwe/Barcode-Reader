@@ -86,14 +86,14 @@ all the endpoints must be used within `JSON` object
 
 - post new product `http://127.0.0.1:8000/products/`:
   requires a body of type json
-  example of a body <br>
+  example of a body 
   `{
   "name": "Vaseline cream",
   "quantity":10,
   "code": "6001087011136",
   "price": "6.50" }`
 
-      <b>response in from of :</b> `{
+      response in from of : `{
       "_id": "5f2333d3c0382e73cf45bced",
       "name": "Vaseline cream",
       "quantity": 10,
