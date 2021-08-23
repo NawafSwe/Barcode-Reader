@@ -355,5 +355,6 @@ StartQuagga();
 
 //starting again if the div was clicked
 //this is my own workflow feel free to remove it or come up with something nice
-camera.addEventListener('click', () => activateCamera());
+camera.addEventListener('click', () => {activateCamera();}
+);
 /* ------------------- EVENTS ------------------- */
