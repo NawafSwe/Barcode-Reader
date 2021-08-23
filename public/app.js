@@ -159,6 +159,8 @@ const startLookingForProduct = async (code) => {
 
                 //last exit the function and return the found product
                 return product;
+            }else{
+                postProduct({code:code});
             }
         }
     }, 1000);
@@ -173,12 +175,12 @@ const startLookingForProduct = async (code) => {
  * @throws {Error} returns error message in the console if there is any, feel free to customize your message error
  * @description post new product to the database
  */
-async function postProduct(data) {
+const postProduct = async function(data) {
     try {
         //for the seek of testing this method later on you can put your own variables from the front-end by pasting the data as a whole product
         const price = 1.5;
-        const name = 'orange juice';
-        const code = '1234567895';
+        const name = 'dounts';
+        const code = data.code;
         const quantity = 1;
         const product = {
             price: price,

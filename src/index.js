@@ -65,7 +65,7 @@ db_connection(MONGO_URI);
  * @param {callback} middleware - Express middleware.
  */
 
-app.get('/', async (req, res) => {
+app.get('/', async (_, res) => {
     res.render('home');
 });
 
