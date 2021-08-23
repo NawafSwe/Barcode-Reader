@@ -32,7 +32,7 @@ const connection = async (MONGO_URI) => {
             useFindAndModify: false,
         });
 
-        console.log(`successfully connected to barcodeSystem `);
+        console.log(`successfully connected to barcodeSystem`);
     } catch (error) {
         console.log(`failed to connect to the database try again later , error : `, e.message);
     }

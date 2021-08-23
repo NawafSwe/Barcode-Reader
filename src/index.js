@@ -16,15 +16,6 @@
 const express = require('express');
 
 /**
- * body parser model
- * @const
- * @type {Object}
- * @namespace bodyParser
- */
-
-const bodyParser = require('body-parser');
-
-/**
  * cors module
  * @type {Object}
  * @const
@@ -46,7 +37,7 @@ const db_connection = require('./configuration/db');
 
 /* -------App Configuration-------- */
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
