@@ -47,7 +47,8 @@ to test it locally feel free to change it later on or play with it
 all the endpoints must be used within `JSON` object
 
 - get all products `http://127.0.0.1:8000/products/` : <strong>response in from of :</strong>
-  `[{
+  ` js
+    [{
 "_id": "5f22ef7eae488a486abf6eef",
 "name": "The Body Shop",
 "quantity": 20,
@@ -87,7 +88,8 @@ all the endpoints must be used within `JSON` object
 - post new product `http://127.0.0.1:8000/products/`:
   requires a body of type json
   example of a body 
-  `{
+  `js 
+      {
   "name": "Vaseline cream",
   "quantity":10,
   "code": "6001087011136",
@@ -106,14 +108,17 @@ all the endpoints must be used within `JSON` object
 - delete a product by id `http://127.0.0.1:8000/products/5f22cf0696d8fe2d95566143`
   <strong>response in from of :</strong>
   
-  `{ "_id": "5f22ef7eae488a486abf6eef", "name": "The Body Shop", "quantity": 20, "code": "5028197192723", "price": 30, "__v": 0 }`
+  `js
+      { "_id": "5f22ef7eae488a486abf6eef", "name": "The Body Shop", "quantity": 20, "code": "5028197192723", "price": 30, "__v": 0 }`
 
 - update a product info by id `http://127.0.0.1:8000/products/5f22cf0696d8fe2d95566143`
   <strong> requires a body same as post request </strong>
   <br>
   <strong>response in form of : </strong>
-  `{ "_id": "5f22efb4d4fc4d48c05769a9", "name": "The Body Shop", "quantity": 100, "code": "5028197192723", "price": 6.5, "__v": 0 }`
+  `js
+    { "_id": "5f22efb4d4fc4d48c05769a9", "name": "The Body Shop", "quantity": 100, "code": "5028197192723", "price": 6.5, "__v": 0 }`
 
 - get product by its code `http://127.0.0.1:8000/products/?code=6001087011136` :
   <strong>response in form of </strong>
-  `{ "product": { "_id": "5f230931113c016f451b4cbb", "name": "Vaseline cream", "quantity": 10, "code": "6001087011136", "price": 6.5, "__v": 0 }, "code": 200, "status": "OK" }`
+  `js
+    { "product": { "_id": "5f230931113c016f451b4cbb", "name": "Vaseline cream", "quantity": 10, "code": "6001087011136", "price": 6.5, "__v": 0 }, "code": 200,          "status": "OK" }`
