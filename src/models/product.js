@@ -26,7 +26,7 @@ const ProductSchema = mongoose.Schema({
     //quantity: quantity of product
     quantity: {type: Number},
     //code: code of product
-    code: {type: String},
+    code: {type: String,unique:true},
     //price: price of product
     price: {type: Number},
 });

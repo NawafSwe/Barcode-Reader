@@ -1,7 +1,7 @@
 /* ------------------- IMPORTANT  VARIABLES -------------------  */
 
 //local uri for the database you can use it during the testing phase not in production
-const LOCAL_API = `http://127.0.0.1:8000/products/`;
+const LOCAL_API = `http://127.0.0.1:9090/products/`;
 
 //if you host your own database in your lovely cloud , I recommend to use mongoAtlas and heroku
 const HOSTED_SERVER = ``;
@@ -178,8 +178,8 @@ const startLookingForProduct = async (code) => {
 const postProduct = async function(data) {
     try {
         //for the seek of testing this method later on you can put your own variables from the front-end by pasting the data as a whole product
-        const price = 1.5;
-        const name = 'dounts';
+        const price = 2;
+        const name = 'nestle Pure Life';
         const code = data.code;
         const quantity = 1;
         const product = {

@@ -19,14 +19,14 @@ const Product = require('../models/product');
  */
 
 const getProducts = async () => {
-    try {
-        const response = await Product.find({});
-        return response;
-    } catch (e) {
-        console.log(
-            `error ocurred in productController at getProducts() , error message : ${e.message}`
-        );
-    }
+	try {
+		const response = await Product.find({});
+		return response;
+	} catch (e) {
+		console.log(
+			`error ocurred in productController at getProducts() , error message : ${e.message}`
+		);
+	}
 };
 
 /** @author Nawaf Alsharqi.
@@ -39,15 +39,23 @@ const getProducts = async () => {
  * @description post new product to the database.
  */
 const postProduct = async (product) => {
-    try {
-        console.log(product);
-        const response = await Product.create(product);
-        return response;
-    } catch (e) {
-        console.log(
-            `error ocurred in productController at postProduct() , error message : ${e.message}`
-        );
-    }
+	try {
+		const findProductByCodeResponse = await Product.findOne({ code: product.code });
+		console.log(findProductByCodeResponse);
+		if (findProductByCodeResponse == null) {
+			const response = await Product.create(product);
+			return response;
+		}
+		return {
+			data: { ...findProductByCodeResponse },
+			message: `product with code: ${product.code} is already exist`,
+			status: 304,
+		};
+	} catch (e) {
+		console.log(
+			`error ocurred in productController at postProduct() , error message : ${e.message}`
+		);
+	}
 };
 
 /** @author Nawaf Alsharqi.
@@ -60,14 +68,14 @@ const postProduct = async (product) => {
  * @description returns a product from the database by its id.
  */
 const getProductById = async (id) => {
-    try {
-        const response = await Product.findById(id);
-        return response;
-    } catch (e) {
-        console.log(
-            `error ocurred in productController at getProductById() , error message : ${e.message}`
-        );
-    }
+	try {
+		const response = await Product.findById(id);
+		return response;
+	} catch (e) {
+		console.log(
+			`error ocurred in productController at getProductById() , error message : ${e.message}`
+		);
+	}
 };
 
 /** @author Nawaf Alsharqi.
@@ -80,14 +88,14 @@ const getProductById = async (id) => {
  * @description deletes a product from a database by its id.
  */
 const deleteProduct = async (id) => {
-    try {
-        const response = await Product.findByIdAndRemove(id);
-        return response;
-    } catch (e) {
-        console.log(
-            `error ocurred in productController at deleteProduct() , error message : ${e.message}`
-        );
-    }
+	try {
+		const response = await Product.findByIdAndRemove(id);
+		return response;
+	} catch (e) {
+		console.log(
+			`error ocurred in productController at deleteProduct() , error message : ${e.message}`
+		);
+	}
 };
 
 /** @author Nawaf Alsharqi.
@@ -102,14 +110,14 @@ const deleteProduct = async (id) => {
  */
 
 const putProduct = async (id, product) => {
-    try {
-        const response = await Product.findByIdAndUpdate(id, product);
-        return response;
-    } catch (e) {
-        console.log(
-            `error ocurred in productController at deleteProduct() , error message : ${e.message}`
-        );
-    }
+	try {
+		const response = await Product.findByIdAndUpdate(id, product);
+		return response;
+	} catch (e) {
+		console.log(
+			`error ocurred in productController at deleteProduct() , error message : ${e.message}`
+		);
+	}
 };
 
 /** @author Nawaf Alsharqi.
@@ -122,19 +130,19 @@ const putProduct = async (id, product) => {
  * @description gets a particular product by its code from the database
  */
 const getProductByCode = async (code) => {
-    try {
-        const response = await Product.findOne({code: code});
-        const result = {
-            product: response,
-            code: 200,
-            status: 'OK',
-        };
-        return result;
-    } catch (e) {
-        console.log(
-            `error ocurred in productController at getProductByCode() , error message : ${e.message} `
-        );
-    }
+	try {
+		const response = await Product.findOne({ code: code });
+		const result = {
+			product: response,
+			code: 200,
+			status: 'OK',
+		};
+		return result;
+	} catch (e) {
+		console.log(
+			`error ocurred in productController at getProductByCode() , error message : ${e.message} `
+		);
+	}
 };
 
 /* ------- Model Exporting for functions -------- */
@@ -149,10 +157,10 @@ const getProductByCode = async (code) => {
  * getProductById: (function(String): Promise<Object<Product>>)}}
  */
 module.exports = {
-    getProducts,
-    postProduct,
-    getProductById,
-    putProduct,
-    getProductByCode,
-    deleteProduct,
+	getProducts,
+	postProduct,
+	getProductById,
+	putProduct,
+	getProductByCode,
+	deleteProduct,
 };
