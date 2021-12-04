@@ -22,7 +22,7 @@
 		"homepage": "https://github.com/NawafSwe/Barcode-Reader-#readme",
 		"dependencies": {
 				"@zxing/library": "^0.18.6",
-				"axios": "^0.21.3",
+				"axios": "^0.21.4",
 				"Babel": "0.0.1",
 				"body-parser": "^1.19.0",
 				"connect-ensure-login": "^0.1.1",
