@@ -45,7 +45,7 @@
 				"migrate": "^1.6.2",
 				"module-alias": "^2.2.2",
 				"mongodb": "^3.7.0",
-				"mongoose": "^6.0.4",
+				"mongoose": "^6.0.12",
 				"morgan": "^1.9.1",
 				"node-fetch": "^2.6.2",
 				"qrcode": "^1.4.4",
