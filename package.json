@@ -44,7 +44,7 @@
 				"memorystore": "^1.6.7",
 				"migrate": "^1.6.2",
 				"module-alias": "^2.2.2",
-				"mongoose": "^6.2.4",
+				"mongoose": "^6.2.5",
 				"mongodb": "^3.7.3",
 				"morgan": "^1.9.1",
 				"node-fetch": "^3.1.1",
