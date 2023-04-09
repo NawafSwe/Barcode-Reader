@@ -42,7 +42,7 @@
 				"jest": "^26.6.3",
 				"mandatoryenv": "^1.1.1",
 				"memorystore": "^1.6.7",
-				"migrate": "^1.6.2",
+				"migrate": "^1.8.0",
 				"module-alias": "^2.2.2",
 				"mongoose": "^6.2.5",
 				"mongodb": "^3.7.3",
