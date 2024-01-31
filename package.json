@@ -39,7 +39,7 @@
 				"has-keys": "^0.1.0",
 				"helmet": "^3.23.3",
 				"http-status": "^1.5.0",
-				"jest": "^27.0.0",
+				"jest": "^28.0.0",
 				"mandatoryenv": "^1.1.1",
 				"memorystore": "^1.6.7",
 				"migrate": "^1.8.0",
