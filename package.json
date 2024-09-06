@@ -22,7 +22,7 @@
 		"homepage": "https://github.com/NawafSwe/Barcode-Reader-#readme",
 		"dependencies": {
 				"@zxing/library": "^0.19.1",
-				"axios": "^1.6.4",
+				"axios": "^1.6.8",
 				"Babel": "0.0.1",
 				"body-parser": "^1.20.0",
 				"connect-ensure-login": "^0.1.1",
@@ -44,7 +44,7 @@
 				"memorystore": "^1.6.7",
 				"migrate": "^1.8.0",
 				"module-alias": "^2.2.2",
-				"mongoose": "^6.2.5",
+				"mongoose": "^8.0.0",
 				"mongodb": "^3.7.3",
 				"morgan": "^1.9.1",
 				"node-fetch": "^3.2.10",
